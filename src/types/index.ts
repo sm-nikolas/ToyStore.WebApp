@@ -49,12 +49,12 @@ export interface RawAPIResponse {
       estatisticas: {
         vendas: Sale[];
       };
-      duplicado?: any;
+      duplicado?: unknown;
     }>;
   };
   meta: {
     registroTotal: number;
     pagina: number;
   };
-  redundante?: any;
+  redundante?: unknown;
 }

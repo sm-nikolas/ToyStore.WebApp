@@ -1,4 +1,4 @@
-import { Client, RawAPIResponse, Sale, DailySales, TopClients, ClientStats } from '../types';
+import { Client, RawAPIResponse, DailySales, TopClients, ClientStats } from '../types';
 
 // Mock data simulating the messy API structure
 const mockAPIResponse: RawAPIResponse = {
