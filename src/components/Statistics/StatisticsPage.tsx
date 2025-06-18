@@ -64,7 +64,7 @@ const StatisticsPage: React.FC = () => {
         <p className="text-gray-600">Análise detalhada de vendas e performance dos clientes</p>
       </div>
 
-      {/* Summary Stats */}
+      {/* Estatísticas Resumidas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatsCard
           title="Receita Total"
@@ -92,7 +92,7 @@ const StatisticsPage: React.FC = () => {
         />
       </div>
 
-      {/* Top Clients Highlights */}
+      {/* Destaques dos Top Clientes */}
       {topClients && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Card hover>
@@ -153,7 +153,7 @@ const StatisticsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Daily Sales Chart - Now Full Width */}
+      {/* Gráfico de Vendas Diárias */}
       <Card>
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Vendas por Dia</h3>
         <div className="h-96">
@@ -189,7 +189,7 @@ const StatisticsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Detailed Client Performance */}
+      {/* Performance Detalhada por Cliente */}
       <Card>
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Performance Detalhada por Cliente</h3>
         <div className="overflow-x-auto">

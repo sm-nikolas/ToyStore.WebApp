@@ -2,6 +2,7 @@ import React from 'react';
 import { Calendar, LogOut } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { logout } from '../../utils/auth';
+import { getGreeting } from '../../utils/helpers';
 
 const Header: React.FC = () => {
   const { user, setUser } = useAuth();
@@ -18,13 +19,15 @@ const Header: React.FC = () => {
     setUser(null);
   };
 
+  const greeting = getGreeting();
+
   return (
     <header className="bg-white border-b border-gray-200">
       <div className="px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
-              Bom dia, {user?.name}
+              {greeting}, {user?.name}
             </h1>
             <p className="text-sm text-gray-500 capitalize">{currentDate}</p>
           </div>

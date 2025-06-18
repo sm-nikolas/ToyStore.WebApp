@@ -9,6 +9,7 @@ import Input from '../UI/Input';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import Modal from '../UI/Modal';
 import ClientForm from './ClientForm';
+import Tooltip from '../UI/Tooltip';
 
 const ClientList: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);
@@ -119,7 +120,7 @@ const ClientList: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats */}
+      {/* Estatísticas */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <Card>
           <div className="text-center">
@@ -141,7 +142,7 @@ const ClientList: React.FC = () => {
         </Card>
       </div>
 
-      {/* Client List */}
+      {/* Lista de Clientes */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredClients.map((client, index) => {
           const stats = calculateClientStats(client);
@@ -171,35 +172,21 @@ const ClientList: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Missing Letter Badge with Tooltip */}
                 <div className="relative group">
-                  <div className={`text-xs font-mono px-2 py-1 rounded-md cursor-help flex items-center space-x-1 ${
-                    hasComplete 
-                      ? 'bg-green-100 text-green-700' 
-                      : 'bg-gray-100 text-gray-600'
-                  }`}>
-                    <span>{missingLetter}</span>
-                    <HelpCircle className="h-3 w-3 opacity-60" />
-                  </div>
-                  
-                  {/* Tooltip */}
-                  <div className="absolute right-0 top-full mt-2 w-64 bg-gray-900 text-white text-xs rounded-lg p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 shadow-lg">
-                    <div className="font-medium mb-1">
-                      {hasComplete ? 'Nome completo!' : 'Primeira letra faltante'}
+                  <Tooltip content={hasComplete ? 'Nome completo!' : 'Primeira letra faltante'} subContent={hasComplete ? `O nome "${client.nomeCompleto}" contém todas as letras do alfabeto.` : `Esta é a primeira letra do alfabeto que não aparece no nome "${client.nomeCompleto}".`} position="right">
+                    <div className={`text-xs font-mono px-2 py-1 rounded-md cursor-help flex items-center space-x-1 ${
+                      hasComplete 
+                        ? 'bg-green-100 text-green-700' 
+                        : 'bg-gray-100 text-gray-600'
+                    }`}>
+                      <span>{missingLetter}</span>
+                      <HelpCircle className="h-3 w-3 opacity-60" />
                     </div>
-                    <div className="text-gray-300">
-                      {hasComplete 
-                        ? `O nome "${client.nomeCompleto}" contém todas as letras do alfabeto.`
-                        : `Esta é a primeira letra do alfabeto que não aparece no nome "${client.nomeCompleto}".`
-                      }
-                    </div>
-                    {/* Arrow */}
-                    <div className="absolute -top-1 right-3 w-2 h-2 bg-gray-900 transform rotate-45"></div>
-                  </div>
+                  </Tooltip>
                 </div>
               </div>
 
-              {/* Contact Info */}
+              {/* Informações de Contato */}
               <div className="space-y-2 mb-6">
                 <div className="flex items-center text-sm text-gray-600">
                   <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
@@ -211,7 +198,7 @@ const ClientList: React.FC = () => {
                 </div>
               </div>
 
-              {/* Stats Grid */}
+              {/* Grade de Estatísticas */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900">
@@ -227,7 +214,7 @@ const ClientList: React.FC = () => {
                 </div>
               </div>
 
-              {/* Additional Stats for Active Clients */}
+              {/* Estatísticas Adicionais para Clientes Ativos */}
               {stats.totalVendas > 0 && (
                 <div className="grid grid-cols-2 gap-4 mb-6 pt-4 border-t border-gray-100">
                   <div className="text-center">
@@ -245,16 +232,18 @@ const ClientList: React.FC = () => {
                 </div>
               )}
 
-              {/* VIP Badge */}
+              {/* Badge VIP */}
               {stats.totalVendas > 500 && (
                 <div className="mb-4">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    Cliente VIP
-                  </div>
+                  <Tooltip content="Cliente VIP" subContent="O cliente é considerado VIP se o total de compras for superior a R$ 500,00.">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 cursor-help">
+                      Cliente VIP
+                    </div>
+                  </Tooltip>
                 </div>
               )}
 
-              {/* Actions */}
+              {/* Ações */}
               <div className="flex space-x-2">
                 <button
                   onClick={() => handleEdit(client)}
@@ -288,7 +277,7 @@ const ClientList: React.FC = () => {
         </Card>
       )}
 
-      {/* Add Modal */}
+      {/* Modal de Adicionar */}
       <Modal
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
@@ -301,7 +290,7 @@ const ClientList: React.FC = () => {
         />
       </Modal>
 
-      {/* Edit Modal */}
+      {/* Modal de Editar */}
       <Modal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
@@ -317,7 +306,7 @@ const ClientList: React.FC = () => {
         )}
       </Modal>
 
-      {/* Delete Modal */}
+      {/* Modal de Excluir */}
       <Modal
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
