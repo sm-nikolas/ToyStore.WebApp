@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             {/* Botão de menu para mobile */}
             <button
               onClick={onMenuClick}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 active:scale-95"
             >
               <Menu className="h-5 w-5 text-gray-600" />
             </button>
