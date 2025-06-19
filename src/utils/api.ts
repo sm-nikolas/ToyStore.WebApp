@@ -103,9 +103,9 @@ const mockAPIResponse: RawAPIResponse = {
       },
       {
         info: {
-          nomeCompleto: "Joaquim Barboza da Silva Pereira Xavier Neto",
+          nomeCompleto: "Joacquim Wosvaldo Kleiton Bahrboza da Silva Pereira Xavyer Neto Fernades Galeano",
           detalhes: {
-            email: "joaquim.completo@example.com",
+            email: "joacquim.completo@example.com",
             nascimento: "1980-04-12"
           }
         },
