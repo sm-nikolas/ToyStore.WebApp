@@ -14,9 +14,9 @@ const Card: React.FC<CardProps> = ({
   hover = false 
 }) => {
   const paddingClasses = {
-    sm: 'p-4',
-    md: 'p-6',
-    lg: 'p-8'
+    sm: 'p-3 lg:p-4',
+    md: 'p-4 lg:p-6',
+    lg: 'p-6 lg:p-8'
   };
 
   return (

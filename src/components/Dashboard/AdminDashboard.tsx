@@ -48,9 +48,9 @@ const AdminDashboard: React.FC = () => {
   const averageOrderValue = totalSales > 0 ? totalRevenue / totalSales : 0;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       {/* Cards de Estatísticas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <StatsCard
           title="Total de Clientes"
           value={clients.length}
@@ -83,7 +83,7 @@ const AdminDashboard: React.FC = () => {
 
       {/* Top Clientes */}
       {topClients && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           <Card hover>
             <div className="text-center">
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
@@ -146,10 +146,10 @@ const AdminDashboard: React.FC = () => {
             return (
               <div 
                 key={client.id} 
-                className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-200 transform hover:scale-[1.01] animate-fade-in"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-200 transform hover:scale-[1.01] animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 mb-3 sm:mb-0">
                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                     <span className="text-green-600 font-semibold text-sm">
                       {client.nomeCompleto.charAt(0)}
@@ -160,7 +160,7 @@ const AdminDashboard: React.FC = () => {
                     <p className="text-sm text-gray-500">{client.email}</p>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <p className="font-medium text-gray-900">{formatCurrency(stats.totalVendas)}</p>
                   <p className="text-sm text-gray-500">{client.vendas.length} pedidos</p>
                 </div>

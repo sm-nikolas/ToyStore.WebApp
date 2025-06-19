@@ -56,15 +56,15 @@ const StatisticsPage: React.FC = () => {
   }));
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Estatísticas</h1>
+        <h1 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">Estatísticas</h1>
         <p className="text-gray-600">Análise detalhada de vendas e performance dos clientes</p>
       </div>
 
       {/* Estatísticas Resumidas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <StatsCard
           title="Receita Total"
           value={formatCurrency(totalRevenue)}
@@ -93,17 +93,17 @@ const StatisticsPage: React.FC = () => {
 
       {/* Destaques dos Top Clientes */}
       {topClients && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           <Card hover>
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
-                <TrendingUp className="h-8 w-8 text-green-600" />
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
+                <TrendingUp className="h-6 w-6 lg:h-8 lg:w-8 text-green-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Maior Volume de Vendas</h3>
+              <h3 className="text-base lg:text-lg font-semibold text-gray-900 mb-2">Maior Volume de Vendas</h3>
               {topClients.maiorVolume && (
                 <div className="space-y-2">
-                  <p className="text-xl font-bold text-gray-900">{topClients.maiorVolume.nomeCompleto}</p>
-                  <p className="text-2xl font-bold text-green-600">
+                  <p className="text-lg lg:text-xl font-bold text-gray-900">{topClients.maiorVolume.nomeCompleto}</p>
+                  <p className="text-xl lg:text-2xl font-bold text-green-600">
                     {formatCurrency(calculateClientStats(topClients.maiorVolume).totalVendas)}
                   </p>
                   <p className="text-sm text-gray-500">
@@ -116,14 +116,14 @@ const StatisticsPage: React.FC = () => {
 
           <Card hover>
             <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
-                <DollarSign className="h-8 w-8 text-emerald-600" />
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
+                <DollarSign className="h-6 w-6 lg:h-8 lg:w-8 text-emerald-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Maior Ticket Médio</h3>
+              <h3 className="text-base lg:text-lg font-semibold text-gray-900 mb-2">Maior Ticket Médio</h3>
               {topClients.maiorMedia && (
                 <div className="space-y-2">
-                  <p className="text-xl font-bold text-gray-900">{topClients.maiorMedia.nomeCompleto}</p>
-                  <p className="text-2xl font-bold text-emerald-600">
+                  <p className="text-lg lg:text-xl font-bold text-gray-900">{topClients.maiorMedia.nomeCompleto}</p>
+                  <p className="text-xl lg:text-2xl font-bold text-emerald-600">
                     {formatCurrency(calculateClientStats(topClients.maiorMedia).mediaVendas)}
                   </p>
                   <p className="text-sm text-gray-500">por pedido</p>
@@ -134,14 +134,14 @@ const StatisticsPage: React.FC = () => {
 
           <Card hover>
             <div className="text-center">
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
-                <Calendar className="h-8 w-8 text-teal-600" />
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-200 hover:scale-110">
+                <Calendar className="h-6 w-6 lg:h-8 lg:w-8 text-teal-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Maior Frequência</h3>
+              <h3 className="text-base lg:text-lg font-semibold text-gray-900 mb-2">Maior Frequência</h3>
               {topClients.maiorFrequencia && (
                 <div className="space-y-2">
-                  <p className="text-xl font-bold text-gray-900">{topClients.maiorFrequencia.nomeCompleto}</p>
-                  <p className="text-2xl font-bold text-teal-600">
+                  <p className="text-lg lg:text-xl font-bold text-gray-900">{topClients.maiorFrequencia.nomeCompleto}</p>
+                  <p className="text-xl lg:text-2xl font-bold text-teal-600">
                     {calculateClientStats(topClients.maiorFrequencia).diasComVendas}
                   </p>
                   <p className="text-sm text-gray-500">dias únicos com compras</p>
@@ -155,7 +155,7 @@ const StatisticsPage: React.FC = () => {
       {/* Gráfico de Vendas Diárias */}
       <Card>
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Vendas por Dia</h3>
-        <div className="h-96">
+        <div className="h-64 lg:h-96">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -195,19 +195,19 @@ const StatisticsPage: React.FC = () => {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Cliente
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Total de Vendas
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Nº Pedidos
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Ticket Médio
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Frequência
                 </th>
               </tr>
@@ -224,22 +224,22 @@ const StatisticsPage: React.FC = () => {
                       className="hover:bg-gray-50 transition-colors duration-200 animate-fade-in"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-3 lg:px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="text-sm font-medium text-gray-900">{client.nomeCompleto}</div>
                           <div className="text-sm text-gray-500">{client.email}</div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">
+                      <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">
                         {formatCurrency(stats.totalVendas)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {client.vendas.length}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {formatCurrency(stats.mediaVendas)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {stats.diasComVendas} dias únicos
                       </td>
                     </tr>

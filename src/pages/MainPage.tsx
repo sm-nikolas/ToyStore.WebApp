@@ -7,6 +7,7 @@ import StatisticsPage from '../components/Statistics/StatisticsPage';
 
 const MainPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -23,10 +24,27 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex">
-        <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-        <main className="flex-1 p-6">
+        {/* Sidebar para desktop */}
+        <div className="hidden lg:block">
+          <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+        </div>
+        
+        {/* Sidebar móvel */}
+        {sidebarOpen && (
+          <div className="lg:hidden fixed inset-0 z-50">
+            <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={() => setSidebarOpen(false)} />
+            <div className="fixed inset-y-0 left-0 w-64 bg-white shadow-xl">
+              <Sidebar activeTab={activeTab} onTabChange={(tab) => {
+                setActiveTab(tab);
+                setSidebarOpen(false);
+              }} />
+            </div>
+          </div>
+        )}
+        
+        <main className="flex-1 p-4 lg:p-6 w-full lg:w-auto">
           {renderContent()}
         </main>
       </div>

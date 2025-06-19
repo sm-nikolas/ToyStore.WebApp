@@ -19,8 +19,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
 
   return (
     <div className="bg-white w-64 min-h-screen border-r border-gray-200">
-      <div className="p-6">
-        <div className="flex items-center space-x-2 mb-8">
+      <div className="p-4 lg:p-6">
+        <div className="flex items-center space-x-2 mb-6 lg:mb-8">
           <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">T</span>
           </div>
