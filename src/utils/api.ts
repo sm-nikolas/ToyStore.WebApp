@@ -1,6 +1,6 @@
 import { Client, RawAPIResponse, DailySales, TopClients, ClientStats } from '../types';
 
-// Mock data simulating the messy API structure
+// Dados mock simulando a estrutura bagunçada da API
 const mockAPIResponse: RawAPIResponse = {
   data: {
     clientes: [
@@ -128,7 +128,6 @@ const mockAPIResponse: RawAPIResponse = {
   }
 };
 
-// Normalize messy API data
 export const normalizeClientData = (rawData: RawAPIResponse): Client[] => {
   return rawData.data.clientes.map((rawClient, index) => ({
     id: (index + 1).toString(),
@@ -139,7 +138,7 @@ export const normalizeClientData = (rawData: RawAPIResponse): Client[] => {
   }));
 };
 
-// API functions
+// Funções da API
 export const fetchClients = async (): Promise<Client[]> => {
   await new Promise(resolve => setTimeout(resolve, 800));
   return normalizeClientData(mockAPIResponse);
@@ -224,7 +223,6 @@ export const createClient = async (clientData: Omit<Client, 'id' | 'vendas'>): P
     vendas: []
   };
   
-  // In a real app, this would be sent to the server
   mockAPIResponse.data.clientes.push({
     info: {
       nomeCompleto: newClient.nomeCompleto,

@@ -49,7 +49,6 @@ const StatisticsPage: React.FC = () => {
   const activeClients = clients.filter(c => c.vendas.length > 0).length;
   const vipClients = clients.filter(c => calculateClientStats(c).totalVendas > 500).length;
 
-  // Prepare chart data
   const chartData = dailySales.map(day => ({
     data: formatDate(day.data),
     total: day.total,

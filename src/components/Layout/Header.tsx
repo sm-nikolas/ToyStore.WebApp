@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, LogOut } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { logout } from '../../utils/auth';
 import { getGreeting } from '../../utils/helpers';
 

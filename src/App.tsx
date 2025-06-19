@@ -1,5 +1,6 @@
 import React from 'react';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { useAuth } from './hooks/useAuth';
 import AuthPage from './pages/AuthPage';
 import MainPage from './pages/MainPage';
 import LoadingSpinner from './components/UI/LoadingSpinner';
